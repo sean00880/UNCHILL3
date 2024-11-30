@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
     autoPlay
     loop
     muted 
-    
+    preload="auto"
   ><source type='video/mp4'src='/images/unchill.mp4'/></video>
   <div className="z-10 text-center flex flex-col items-center p-6">
     <h1 className="text-6xl font-extrabold mb-4 text-blue-200 glitch-effect">
