@@ -91,44 +91,19 @@ export default function TopBar() {
           <Link href="/#home" className="block px-4 py-2 hover:bg-black rounded">
             Home
           </Link>
-          <div className="group relative">
+         
             <Link href="/#about" className="block px-4 py-2 hover:bg-black rounded">
               About
             </Link>
-            <div className="pl-4 mt-2 hidden group-hover:block">
-              <Link href="/#defi-social-network" className="block px-2 py-1 hover:bg-black rounded">
-                DeFi Social Network
-              </Link>
-              <Link href="/#gamefi" className="block px-2 py-1 hover:bg-black rounded">
-                GameFi
-              </Link>
-              <Link href="/#memes" className="block px-2 py-1 hover:bg-black rounded">
-                Memes
-              </Link>
-            </div>
-          </div>
+            
           <Link href="/#tokenomics" className="block px-4 py-2 hover:bg-black rounded">
             Tokenomics
           </Link>
           <Link href="/#roadmap" className="block px-4 py-2 hover:bg-black rounded">
             Roadmap
           </Link>
-          <Link href="/#whitepaper" className="block px-4 py-2 hover:bg-black rounded">
-            Whitepaper
-          </Link>
-          <div className="group relative">
-            <Link href="/#resources" className="block px-4 py-2 hover:bg-black rounded">
-              Resources
-            </Link>
-            <div className="pl-4 mt-2 hidden group-hover:block">
-              <Link href="#blog" className="block px-2 py-1 hover:bg-black rounded">
-                Blog
-              </Link>
-              <Link href="#documentation" className="block px-2 py-1 hover:bg-black rounded">
-                Documentation
-              </Link>
-            </div>
-          </div>
+         
+          
         </div>
       )}
 
