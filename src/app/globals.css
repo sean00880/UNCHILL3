@@ -715,9 +715,9 @@ input[type="file"] {
 
 /* TopBar Styling */
 .topbar {
-  background-color: var(--topbar-bg);
+
   color: var(--topbar-text);
-  transition: background-color 0.3s, color 0.3s;
+ 
 }
 
 .topbar .btn-connect {
