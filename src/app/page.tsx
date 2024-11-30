@@ -154,6 +154,7 @@ const HomePage: React.FC = () => {
 >
   <h2 className="text-4xl font-bold mb-8 text-center">Tokenomics</h2>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
+    {/* Total Supply */}
     <div className="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
       <h3 className="text-2xl font-semibold mb-2 flex items-center justify-center text-black">
         <Image
@@ -161,13 +162,15 @@ const HomePage: React.FC = () => {
           alt="Supply Icon"
           width={30}
           height={30}
-          className="mr-2 "
+          className="mr-2"
         />
         Total Supply
       </h3>
       <p className="text-4xl font-bold text-[#e3af2c]">97.93 M</p>
       <div className="absolute top-[-10px] right-[-10px] w-12 h-12 bg-[#f7d774] rounded-full animate-pulse"></div>
     </div>
+
+    {/* Taxes */}
     <div className="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 text-black transition-transform duration-300">
       <h3 className="text-2xl font-semibold mb-2 flex items-center justify-center text-black">
         <Image
@@ -175,48 +178,51 @@ const HomePage: React.FC = () => {
           alt="Taxes Icon"
           width={30}
           height={30}
-          className="mr-2  text-black"
+          className="mr-2 text-black"
         />
         Taxes
       </h3>
       <p className="text-lg">
         <strong>Buy:</strong> 0%<br />
-        <strong>Sell:</strong> 5%
+        <strong>Sell:</strong> 0%
       </p>
       <div className="absolute bottom-[-20px] left-[-20px] w-16 h-16 bg-[#28508d] rounded-full animate-ping"></div>
     </div>
-    <div className="bg-white p-6 rounded-lg shadow-md transform hover:scale-105  text-black transition-transform duration-300">
-      <h3 className="text-2xl font-semibold mb-2 flex items-center justify-center ">
+
+    {/* Liquidity */}
+    <div className="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 text-black transition-transform duration-300">
+      <h3 className="text-2xl font-semibold mb-2 flex items-center justify-center">
         <Image
           src="/icons/liquidity.png"
           alt="Liquidity Icon"
           width={30}
           height={30}
-          className="mr-2  text-black"
+          className="mr-2 text-black"
         />
         Liquidity
       </h3>
-      <p>75% liquidity locked for 12 months.</p>
+      <p>100% burned liquidity.</p>
       <div className="absolute top-[-20px] left-[-20px] w-16 h-16 bg-[#b9b9b9] rounded-full animate-pulse"></div>
     </div>
   </div>
+
   <div className="text-center mt-12 relative">
     <p className="text-lg mx-20">
       With its fair distribution and sustainable design, <strong>UNCHILL</strong> ensures a robust ecosystem that rewards the community.
     </p>
-    
-    
   </div>
+
   <div className="mt-20 rounded-10">
-      <Image
-        src="/images/banner.png"
-        alt="Funny Dog Character"
-        width={1000}
-        height={1000}
-        className="transform  holographic-effect "
-      />
-    </div>
+    <Image
+      src="/images/banner.png"
+      alt="Funny Dog Character"
+      width={1000}
+      height={1000}
+      className="transform holographic-effect"
+    />
+  </div>
 </section>
+
 
 
       {/* Roadmap Section */}
