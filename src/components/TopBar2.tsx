@@ -43,46 +43,20 @@ export default function TopBar() {
         <Link href="/#home" className="hover:text-blue-500 transition">
           Home
         </Link>
-        <div className="group relative">
+        
           <Link href="/#about" className="hover:text-blue-500 transition">
             About
           </Link>
-          {/* Submenu for About */}
-          <div className="absolute left-[-120%] transform bg-black text-white p-2 rounded shadow-lg hidden group-hover:block">
-            <Link href="/#defi-social-network" className="block px-2 py-1 hover:bg-gray-800 rounded">
-              DeFi Social Network
-            </Link>
-            <Link href="/#gamefi" className="block px-2 py-1 hover:bg-gray-800 rounded">
-              GameFi
-            </Link>
-            <Link href="/#memes" className="block px-2 py-1 hover:bg-gray-800 rounded">
-              Memes
-            </Link>
-          </div>
-        </div>
+        
+   
         <Link href="/#tokenomics" className="hover:text-blue-500 transition">
           Tokenomics
         </Link>
         <Link href="/#roadmap" className="hover:text-blue-500 transition">
           Roadmap
         </Link>
-        <Link href="/#whitepaper" className="hover:text-blue-500 transition">
-          Whitepaper
-        </Link>
-        <div className="group relative">
-          <Link href="/#resources" className="hover:text-blue-500 transition">
-            Resources
-          </Link>
-          {/* Submenu for Resources */}
-          <div className="absolute left-[-120%] transform bg-black text-white p-2 rounded shadow-lg hidden group-hover:block">
-            <Link href="#blog" className="block px-2 py-1 hover:bg-gray-800 rounded">
-              Blog
-            </Link>
-            <Link href="#documentation" className="block px-2 py-1 hover:bg-gray-800 rounded">
-              Documentation
-            </Link>
-          </div>
-        </div>
+  
+       
       </nav>
 
       {/* Mobile Navigation Menu */}
