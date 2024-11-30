@@ -27,25 +27,28 @@ const HomePage: React.FC = () => {
       {/* Hero Section */}
       <section
   id="hero"
-  className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center relative"
+  className="flex flex-col items-center justify-center min-h-screen relative bg-gradient-to-br from-blue-400 via-blue-600 to-blue-300"
 >
-  <video
-    className="absolute inset-0 w-full h-full object-cover opacity-20"
-    autoPlay
-    loop
-    muted 
-    preload="auto"
-  ><source type='video/mp4'src='/images/unchill.mp4'/></video>
+  <div className="absolute inset-0 w-full h-full bg-cover bg-center opacity-20 bg-fixed" style={{ backgroundImage: "url('/images/overlay.jpg')" }}></div>
   <div className="z-10 text-center flex flex-col items-center p-6">
-    <h1 className="text-6xl font-extrabold mb-4 text-blue-200 glitch-effect">
-      MY OLD CHARACTER
+  <div className="w-[20%] lg:w-[30%] relative">
+              <Image
+                src="/images/logo.png"
+                alt="UNCHILL Character"
+                width={400}
+                height={400}
+                className="rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300"
+              />
+              </div>
+    <h1 className=" text-6xl font-extrabold mb-4 text-blue-200 glitch-effect">
+      $ <span className='text-white italic text-6xl'>UNCHILL </span>
     </h1>
     <p className="text-lg mb-6 text-white italic max-w-3xl">
       Witness the rise of UNCHILL, the wild, untamed sibling of CHILLGUY. A
       masterpiece from the legendary artist, here to flip the script and
       dominate the Ethereum memeverse.
     </p>
-    <div className="bg-blue-500 text-white px-6 py-3 rounded-md mb-4 hover:bg-yellow-600 cursor-pointer">
+    <div className="bg-blue-500 text-white px-6 py-3 rounded-md mb-4 hover:bg-[maroon] cursor-pointer">
       <span>Contract: 0x964705b3cf61f42fb6849656064729d9906f50d6</span>
     </div>
     <div className="flex space-x-4 mt-4">
@@ -90,12 +93,13 @@ const HomePage: React.FC = () => {
   <div className="absolute bottom-10">
     <a
       href="#about"
-      className="text-yellow-500 font-bold hover:underline text-lg"
+      className="text-white font-bold hover:underline text-lg"
     >
       Scroll Down
     </a>
   </div>
 </section>
+
 
 
       {/* About Section */}
@@ -113,7 +117,7 @@ const HomePage: React.FC = () => {
         <div className="relative mx-auto max-w-6xl">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             <div className="flex flex-col items-center text-center lg:text-left lg:w-1/2">
-              <h3 className="text-3xl font-semibold text-yellow-400 mb-4">
+              <h3 className="text-3xl font-semibold text-blue-400 mb-4">
                 A Rebel with a Meme Mission
               </h3>
               <p className="text-white text-lg">
@@ -136,8 +140,8 @@ const HomePage: React.FC = () => {
                 height={400}
                 className="rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute top-10 left-10 bg-yellow-400 w-4 h-4 rounded-full animate-ping"></div>
-              <div className="absolute bottom-0 right-0 bg-yellow-400 w-16 h-16 rounded-full animate-ping"></div>
+              <div className="absolute top-10 left-10 bg-blue-400 w-4 h-4 rounded-full animate-ping"></div>
+              <div className="absolute bottom-0 right-0 bg-blue-400 w-16 h-16 rounded-full animate-ping"></div>
             </div>
           </div>
         </div>
@@ -184,7 +188,7 @@ const HomePage: React.FC = () => {
     <div className="bg-white p-6 rounded-lg shadow-md transform hover:scale-105  text-black transition-transform duration-300">
       <h3 className="text-2xl font-semibold mb-2 flex items-center justify-center ">
         <Image
-          src="/images/icon-liquidity.png"
+          src="/icons/liquidity.png"
           alt="Liquidity Icon"
           width={30}
           height={30}
