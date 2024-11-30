@@ -12,7 +12,7 @@ export default function TopBar() {
   };
 
   return (
-    <div className="topbar bg-black flex items-center justify-between px-4 py-4 shadow-lg border-b border-[#ffbf00] relative">
+    <div className="topbar bg-black flex items-center justify-between px-4 py-4 shadow-lg border-b border-[#f3f3f3] relative">
       {/* Hamburger Menu for Mobile */}
       <div className="flex md:hidden">
         <button
@@ -40,11 +40,11 @@ export default function TopBar() {
 
       {/* Desktop Navigation Links */}
       <nav className="hidden md:flex w-1/3 justify-end items-center space-x-4 lg:space-x-6">
-        <Link href="/#home" className="hover:text-yellow-500 transition">
+        <Link href="/#home" className="hover:text-blue-500 transition">
           Home
         </Link>
         <div className="group relative">
-          <Link href="/#about" className="hover:text-yellow-500 transition">
+          <Link href="/#about" className="hover:text-blue-500 transition">
             About
           </Link>
           {/* Submenu for About */}
@@ -60,17 +60,17 @@ export default function TopBar() {
             </Link>
           </div>
         </div>
-        <Link href="/#tokenomics" className="hover:text-yellow-500 transition">
+        <Link href="/#tokenomics" className="hover:text-blue-500 transition">
           Tokenomics
         </Link>
-        <Link href="/#roadmap" className="hover:text-yellow-500 transition">
+        <Link href="/#roadmap" className="hover:text-blue-500 transition">
           Roadmap
         </Link>
-        <Link href="/#whitepaper" className="hover:text-yellow-500 transition">
+        <Link href="/#whitepaper" className="hover:text-blue-500 transition">
           Whitepaper
         </Link>
         <div className="group relative">
-          <Link href="/#resources" className="hover:text-yellow-500 transition">
+          <Link href="/#resources" className="hover:text-blue-500 transition">
             Resources
           </Link>
           {/* Submenu for Resources */}

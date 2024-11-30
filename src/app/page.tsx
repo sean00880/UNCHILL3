@@ -232,7 +232,7 @@ const HomePage: React.FC = () => {
         id="roadmap"
         className="flex flex-col py-16 px-6 bg-gradient-to-b from-[#252525] via-[#090909] to-[#000000] text-white"
       >
-        <h2 className="text-4xl font-bold text-yellow-500 mb-10 text-center">
+        <h2 className="text-4xl font-bold text-blue-200 mb-10 text-center">
           Roadmap
         </h2>
         <div className=" flex flex-row items-center justify-center"> <div className="mt-20 mr-20 rounded-10 items-center justify-center flex flex-col">
