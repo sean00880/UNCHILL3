@@ -132,13 +132,13 @@ const HomePage: React.FC = () => {
                 melt your MetaMask wallet.
               </p>
             </div>
-            <div className="lg:w-[40%] roundd-sm relative">
+            <div className="lg:w-[40%] roundd-sm relative glass ">
               <Image
                 src="/images/meme1.png"
                 alt="UNCHILL Character"
                 width={700}
                 height={700}
-                className=" shadow-lg transform hover:scale-105 transition-transform duration-300"
+                className=" shadow-lg transform hover:scale-105 transition-transform rounded-sm duration-300"
               />
               <div className="absolute top-10 left-10 bg-blue-400 w-4 h-4 rounded-full animate-ping"></div>
               <div className="absolute bottom-0 right-0 bg-blue-400 w-16 h-16 rounded-full animate-ping"></div>
@@ -264,12 +264,7 @@ const HomePage: React.FC = () => {
           title: "Phase 3: Memes & Marketing",
           details:
             "Aggressive meme campaigns and collaborations with influencers.",
-        },
-        {
-          title: "Phase 4: Partnerships",
-          details:
-            "Expand through DeFi tools and NFT integrations for $UNCHILL.",
-        },
+        }
       ].map((phase, index) => (
         <li
           key={index}
