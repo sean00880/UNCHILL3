@@ -132,13 +132,13 @@ const HomePage: React.FC = () => {
                 melt your MetaMask wallet.
               </p>
             </div>
-            <div className="lg:w-[10%] relative">
+            <div className="lg:w-[40%] roundd-sm relative">
               <Image
-                src="/images/logo.png"
+                src="/images/meme1.png"
                 alt="UNCHILL Character"
-                width={400}
-                height={400}
-                className="rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300"
+                width={700}
+                height={700}
+                className=" shadow-lg transform hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute top-10 left-10 bg-blue-400 w-4 h-4 rounded-full animate-ping"></div>
               <div className="absolute bottom-0 right-0 bg-blue-400 w-16 h-16 rounded-full animate-ping"></div>
@@ -239,23 +239,17 @@ const HomePage: React.FC = () => {
     {/* Meme Images */}
     <div className="flex flex-col items-center gap-8 lg:w-1/3">
       <Image
-        src="/images/meme1.png"
+        src="/images/chill.png"
         alt="Funny Dog Character 1"
         width={300}
         height={300}
         className="transform rotate-[-12deg] holographic-effect"
       />
-      <Image
-        src="/images/meme2.png"
-        alt="Funny Dog Character 2"
-        width={300}
-        height={300}
-        className="transform rotate-[12deg] holographic-effect"
-      />
+
     </div>
 
     {/* Roadmap Phases */}
-    <ul className="space-y-8 lg:w-2/3">
+    <ul className="space-y-8 lg:w-2/3 text-center">
       {[
         {
           title: "Phase 1: Launch",
@@ -286,6 +280,16 @@ const HomePage: React.FC = () => {
         </li>
       ))}
     </ul>
+    <div className="flex flex-col items-center gap-8 lg:w-1/3">
+      <Image
+        src="/images/unchill.png"
+        alt="Funny Dog Character 1"
+        width={300}
+        height={300}
+        className="transform rotate-[-12deg] holographic-effect"
+      />
+
+    </div>
   </div>
 </section>
 
