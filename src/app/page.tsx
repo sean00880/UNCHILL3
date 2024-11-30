@@ -229,61 +229,66 @@ const HomePage: React.FC = () => {
 
       {/* Roadmap Section */}
       <section
-        id="roadmap"
-        className="flex flex-col py-16 px-6 bg-gradient-to-b from-[#252525] via-[#090909] to-[#000000] text-white"
-      >
-        <h2 className="text-4xl font-bold text-blue-200 mb-10 text-center">
-          Roadmap
-        </h2>
-        <div className=" flex flex-row items-center justify-center"> <div className="mt-20 mr-20 rounded-10 items-center justify-center flex flex-col">
+  id="roadmap"
+  className="flex flex-col py-16 px-6 bg-gradient-to-b from-[#252525] via-[#090909] to-[#000000] text-white"
+>
+  <h2 className="text-4xl font-bold text-blue-200 mb-10 text-center">
+    Roadmap
+  </h2>
+  <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-12">
+    {/* Meme Images */}
+    <div className="flex flex-col items-center gap-8 lg:w-1/3">
       <Image
         src="/images/meme1.png"
-        alt="Funny Dog Character"
+        alt="Funny Dog Character 1"
         width={300}
         height={300}
-        className="transform -rotate-12 holographic-effect "
+        className="transform rotate-[-12deg] holographic-effect"
       />
       <Image
-        src="/images/meme1.png"
-        alt="Funny Dog Character"
+        src="/images/meme2.png"
+        alt="Funny Dog Character 2"
         width={300}
         height={300}
-        className="transform -rotate-12 holographic-effect "
-      /></div>
-      <ul className="space-y-8 max-w-4xl mx-auto">
-          {[
-            {
-              title: "Phase 1: Launch",
-              details: "Website launch, initial community setup.",
-            },
-            {
-              title: "Phase 2: Listings",
-              details:
-                "Get listed on CoinGecko, CoinMarketCap, and drive initial hype.",
-            },
-            {
-              title: "Phase 3: Memes & Marketing",
-              details:
-                "Aggressive meme campaigns and collaborations with influencers.",
-            },
-            {
-              title: "Phase 4: Partnerships",
-              details:
-                "Expand through DeFi tools and NFT integrations for $UNCHILL.",
-            },
-          ].map((phase, index) => (
-            <li
-              key={index}
-              className="bg-black/70 p-6 rounded-lg shadow-lg hover:bg-black/90"
-            >
-              <h3 className="text-2xl font-bold mb-2">{phase.title}</h3>
-              <p>{phase.details}</p>
-            </li>
-          ))}
-        </ul>
+        className="transform rotate-[12deg] holographic-effect"
+      />
     </div>
-        
-      </section>
+
+    {/* Roadmap Phases */}
+    <ul className="space-y-8 lg:w-2/3">
+      {[
+        {
+          title: "Phase 1: Launch",
+          details: "Website launch, initial community setup.",
+        },
+        {
+          title: "Phase 2: Listings",
+          details:
+            "Get listed on CoinGecko, CoinMarketCap, and drive initial hype.",
+        },
+        {
+          title: "Phase 3: Memes & Marketing",
+          details:
+            "Aggressive meme campaigns and collaborations with influencers.",
+        },
+        {
+          title: "Phase 4: Partnerships",
+          details:
+            "Expand through DeFi tools and NFT integrations for $UNCHILL.",
+        },
+      ].map((phase, index) => (
+        <li
+          key={index}
+          className="bg-black/70 p-6 rounded-lg shadow-lg hover:bg-black/90 transition-all duration-300"
+        >
+          <h3 className="text-2xl font-bold mb-2">{phase.title}</h3>
+          <p className="text-sm text-gray-300">{phase.details}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer
