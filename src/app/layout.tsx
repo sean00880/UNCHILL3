@@ -6,7 +6,6 @@ import { client } from "../lib/urql";
 import localFont from "next/font/local";
 import "./globals.css";
 import { usePathname } from "next/navigation";
-import DefaultLayout from "../components/DefaultLayout";
 import DocumentationLayout from "../components/DocumentationLayout";
 import DocumentationLayout2 from "../components/DocumentationLayout2";
 import { AuthProvider } from "../context/AuthContext";
