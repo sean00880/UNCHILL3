@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
     <p className="text-lg mb-6 text-white italic max-w-3xl">
       Witness the rise of UNCHILL, the wild, untamed sibling of CHILLGUY. A
       masterpiece from the legendary artist, here to flip the script and
-      dominate the Ethereum meme-verse.
+      dominate the Ethereum memeverse.
     </p>
     <div className="bg-blue-500 text-white px-6 py-3 rounded-md mb-4 hover:bg-yellow-600 cursor-pointer">
       <span>Contract: 0x964705b3cf61f42fb6849656064729d9906f50d6</span>
