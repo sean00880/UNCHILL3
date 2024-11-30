@@ -204,15 +204,7 @@ const HomePage: React.FC = () => {
     <p className="text-lg mx-20">
       With its fair distribution and sustainable design, <strong>UNCHILL</strong> ensures a robust ecosystem that rewards the community.
     </p>
-    <div className="absolute -top-20 -right-10">
-      <Image
-        src="/images/meme-coin.png"
-        alt="Meme Coin Character"
-        width={120}
-        height={120}
-        className="transform rotate-12"
-      />
-    </div>
+    
     
   </div>
   <div className="mt-20 rounded-10">
