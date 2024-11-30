@@ -1,17 +1,11 @@
 "use client";
 
 import React from "react";
-import { Provider } from "urql";
-import { client } from "../lib/urql";
 import localFont from "next/font/local";
 import "./globals.css";
 import { usePathname } from "next/navigation";
 import DocumentationLayout from "../components/DocumentationLayout";
 import DocumentationLayout2 from "../components/DocumentationLayout2";
-import { AuthProvider } from "../context/AuthContext";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WagmiProvider } from "wagmi";
-import { config } from "../lib/config";
 import { ReactNode } from "react";
 import Cookies from "js-cookie";
 import LandingLayout from "@components/LandingLayout";
@@ -29,8 +23,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// Create a new instance of QueryClient for TanStack Query
-const queryClient = new QueryClient();
 
 // Define the posts array for blog/documentation pages
 const posts = [
@@ -64,10 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   console.log("Parsed Cookies:", parsedCookies);
 
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <Provider value={client}>
-          <AuthProvider cookies={parsedCookies}>
+
             <html lang="en">
               <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
@@ -83,9 +72,5 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 )}
               </body>
             </html>
-          </AuthProvider>
-        </Provider>
-      </QueryClientProvider>
-    </WagmiProvider>
   );
 }

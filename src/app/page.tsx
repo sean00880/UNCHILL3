@@ -117,9 +117,9 @@ const HomePage: React.FC = () => {
                 A Rebel with a Meme Mission
               </h3>
               <p className="text-white text-lg">
-                UNCHILL isn't just about memes; it’s a philosophy. Born from the
+                UNCHILL isn&apos;t just about memes; it’s a philosophy. Born from the
                 legendary artist behind CHILLGUY, UNCHILL takes a stand against
-                the ordinary, the dull, and the predictable. It's raw. It’s
+                the ordinary, the dull, and the predictable. It&apos;s raw. It’s
                 edgy. And it knows no limits.
               </p>
               <p className="text-white mt-2 text-lg">
