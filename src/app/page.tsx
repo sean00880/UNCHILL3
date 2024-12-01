@@ -2,8 +2,24 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const HomePage: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const openImage = (src: string) => {
+    setSelectedImage(src);
+  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const imagesPerPage = 12;
+  const totalImages = 12; // Change this if new images are added
+  const totalPages = Math.ceil(totalImages / imagesPerPage);
+
+
+
+  const closeImage = () => {
+    setSelectedImage(null);
+  };
   useEffect(() => {
     // Smooth scroll effect
     const links = document.querySelectorAll('a[href^="#"]');
@@ -20,6 +36,7 @@ const HomePage: React.FC = () => {
         }
       });
     });
+    
   }, []);
 
   return (
@@ -105,48 +122,171 @@ const HomePage: React.FC = () => {
       {/* About Section */}
       <section
         id="about"
-        className="py-8 flex flex-col text-center bg-[#1a1a1a] text-white"
+        className="py-8 flex flex-col bg-[#1a1a1a] text-white"
       >
-        <h2 className="text-4xl font-bold mb-6">Who is UNCHILL?</h2>
-        <p className="max-w-4xl mx-auto text-lg text-white mb-6">
+        <h2 className="text-4xl font-bold mb-6 text-center">Who is UNCHILL?</h2>
+        <p className="max-w-4xl mx-auto text-lg text-center mb-6">
           Imagine CHILLGUY’s unpredictable, wild sibling who just crashed the
           Ethereum meme party. That’s UNCHILL—an unstoppable force of chaos,
           creativity, and unfiltered energy, breaking boundaries in the
           meme-verse.
         </p>
-        <div className="relative mx-auto max-w-6xl">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
-            <div className="flex flex-col items-center text-center lg:text-left lg:w-1/2">
-              <h3 className="text-3xl font-semibold text-blue-400 mb-4">
-                A Rebel with a Meme Mission
-              </h3>
-              <p className="text-white text-lg">
-                UNCHILL isn&apos;t just about memes; it’s a philosophy. Born from the
-                legendary artist behind CHILLGUY, UNCHILL takes a stand against
-                the ordinary, the dull, and the predictable. It&apos;s raw. It’s
-                edgy. And it knows no limits.
-              </p>
-              <p className="text-white mt-2 text-lg">
-                Backed by a community of meme warriors and crypto dreamers,
-                UNCHILL is here to disrupt Ethereum with humor so bold it could
-                melt your MetaMask wallet.
-              </p>
-            </div>
-            <div className="lg:w-[40%] roundd-sm relative glass ">
-              <Image
-                src="/images/meme1.png"
-                alt="UNCHILL Character"
-                width={700}
-                height={700}
-                className=" shadow-lg transform hover:scale-105 transition-transform rounded-sm duration-300"
-              />
-              <div className="absolute top-10 left-10 bg-blue-400 w-4 h-4 rounded-full animate-ping"></div>
-              <div className="absolute bottom-0 right-0 bg-blue-400 w-16 h-16 rounded-full animate-ping"></div>
-            </div>
+
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 max-w-6xl mx-auto">
+          <div className="flex flex-col items-center text-center lg:text-left lg:w-1/2">
+            <h3 className="text-3xl font-semibold text-blue-400 mb-4">
+              A Rebel with a Meme Mission
+            </h3>
+            <p className="text-white text-lg">
+              UNCHILL isn&apos;t just about memes; it’s a philosophy. Born from the
+              legendary artist behind CHILLGUY, UNCHILL takes a stand against
+              the ordinary, the dull, and the predictable.
+            </p>
+          </div>
+          <div className="lg:w-[40%] relative">
+            <Image
+              src="/images/meme1.png"
+              alt="UNCHILL Character"
+              width={700}
+              height={700}
+              className="rounded-sm shadow-lg"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 max-w-6xl mx-auto mt-8">
+          <div className="lg:w-[40%] relative">
+            <Image
+              src="/images/meme2.png"
+              alt="UNCHILL Character"
+              width={700}
+              height={700}
+              className="rounded-sm shadow-lg"
+            />
+          </div>
+          <div className="flex flex-col items-center text-center lg:text-right lg:w-1/2">
+            <h3 className="text-3xl font-semibold text-blue-400 mb-4">
+              Breaking Boundaries
+            </h3>
+            <p className="text-white text-lg">
+              Backed by meme warriors and crypto dreamers, UNCHILL disrupts the
+              Ethereum meme-verse with humor so bold it could melt your
+              MetaMask wallet.
+            </p>
           </div>
         </div>
       </section>
+{/* Memes Section */}
+<section
+        id="memes"
+        className="py-8 flex flex-col bg-gray-200 text-[maroon]"
+      >
+        <h2 className="text-4xl font-bold mb-6 text-center">Memes</h2>
+        <div className="flex flex-col lg:flex-col items-center justify-center gap-12 max-w-6xl mx-auto">
+          <div className=" w-full text-center">
+            <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-semibold text-blue-400 mb-4">
+                Meme Generator
+              </h3>
+              <p className="text-lg text-gray-300">Coming Soon!</p>
+            </div>
+          </div>
+          <div className="w-full">
+      <h3 className="text-3xl font-semibold text-blue-400 mb-4 text-center">
+        Memes that got no chill
+      </h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {[
+          "meme4.jpg",
+          "meme5.jpg",
+          "meme6.jpg",
+          "meme7.jpg",
+          "meme8.jpg",
+          "meme9.jpg",
+          "meme10.jpg",
+          "meme11.jpg",
+          "meme12.jpg",
+          "meme13.jpg",
+        ].map((meme, index) => (
+          <div
+            key={index}
+            className="flex relative group cursor-pointer"
+            onClick={() => openImage(`/images/${meme}`)}
+          >
+            <Image
+              src={`/images/${meme}`}
+              alt={`Meme ${index + 4}`}
+              width={200}
+              height={200}
+              className="rounded-md  justify-center self-center shadow-md transform hover:scale-105 transition-transform duration-300 w-full h-auto"
+            />
+          </div>
+        ))}
+      </div>
 
+
+<div className="flex flex-wrap justify-center items-center mt-6 space-x-4">
+  <button
+    className={`px-4 py-2 rounded-md transition text-sm sm:text-base ${
+      currentPage === 1
+        ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+        : "bg-blue-500 text-white hover:bg-blue-600 cursor-pointer"
+    }`}
+    onClick={() => currentPage > 1 && setCurrentPage((prev) => prev - 1)}
+    disabled={currentPage === 1}
+  >
+    Previous
+  </button>
+  <span className="mx-2 sm:mx-4 text-lg text-gray-900">
+    Page {currentPage} of {totalPages}
+  </span>
+  <button
+    className={`px-4 py-2 rounded-md transition text-sm sm:text-base ${
+      currentPage === totalPages
+        ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+        : "bg-maroon text-white hover:bg-gray-800 cursor-pointer"
+    }`}
+    onClick={() => currentPage < totalPages && setCurrentPage((prev) => prev + 1)}
+    disabled={currentPage === totalPages}
+  >
+    Next
+  </button>
+</div>;
+
+      {/* Modal for Image */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          onClick={closeImage} // Close modal on outside click
+        >
+          <div
+            className="relative bg-white/20 rounded-[30px] p-6 shadow-lg"
+            style={{
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+            }}
+            onClick={(e) => e.stopPropagation()} // Prevent close on image/container click
+          >
+            <button
+              onClick={closeImage}
+              className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center animate-pulse hover:scale-110 transition-transform duration-300"
+            >
+              ✕
+            </button>
+            <Image
+              src={selectedImage}
+              alt="Selected Meme"
+              width={500} // Reduced size
+              height={500} // Reduced size
+              className="rounded-[30px] shadow-md w-auto h-auto"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+
+        </div>
+      </section>
       {/* Tokenomics Section */}
       <section
   id="tokenomics"
@@ -246,6 +386,7 @@ const HomePage: React.FC = () => {
 
     </div>
 
+    
     {/* Roadmap Phases */}
     <ul className="space-y-8 lg:w-2/3 text-center">
       {[
@@ -285,7 +426,7 @@ const HomePage: React.FC = () => {
     </div>
   </div>
 </section>
-
+ 
 
       {/* Footer */}
       <footer
