@@ -48,7 +48,9 @@ export default function TopBar() {
             About
           </Link>
         
-   
+          <Link href="/#memes" className="hover:text-blue-500 transition">
+          Memes
+        </Link>
         <Link href="/#tokenomics" className="hover:text-blue-500 transition">
           Tokenomics
         </Link>

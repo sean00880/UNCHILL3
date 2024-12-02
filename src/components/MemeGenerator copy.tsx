@@ -4,19 +4,16 @@ import NextImage from "next/image";
 const MemeGenerator = () => {
   const [background, setBackground] = useState<string>("/images/background.png");
   const [customText, setCustomText] = useState<string>("Your caption here");
-  const [topCaption, setTopCaption] = useState<string>("");
-  const [showTopCaption, setShowTopCaption] = useState(false);
   const [textPosition, setTextPosition] = useState({ x: 100, y: 300 });
-  const [topCaptionPosition, setTopCaptionPosition] = useState({ x: 100, y: 50 });
   const [characterPosition, setCharacterPosition] = useState({ x: 150, y: 100 });
   const [characterSize, setCharacterSize] = useState({ width: 150, height: 200 });
-  const [hovered, setHovered] = useState(false); // Hover state
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  
 
   const [resizing, setResizing] = useState(false);
   const [dragging, setDragging] = useState<{
-    target: "text" | "topCaption" | "character" | null;
+    target: "text" | "character" | null;
     offsetX: number;
     offsetY: number;
   }>({ target: null, offsetX: 0, offsetY: 0 });
@@ -28,43 +25,46 @@ const MemeGenerator = () => {
 
   const handleMouseDown = (
     e: React.MouseEvent<HTMLDivElement>,
-    target: "text" | "character" | "topCaption",
-    position: { x: number; y: number }
+    target: "text" | "character"
   ) => {
     e.stopPropagation();
+  
+    const rect = e.currentTarget.getBoundingClientRect(); // Get the bounding box of the clicked element
+    const offsetX = e.clientX - rect.left; // Calculate offset relative to the element
+    const offsetY = e.clientY - rect.top; // Calculate offset relative to the element
+  
     setDragging({
       target,
-      offsetX: e.clientX - position.x,
-      offsetY: e.clientY - position.y,
+      offsetX,
+      offsetY,
     });
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (resizing) {
-      const rect = previewRef.current?.getBoundingClientRect();
-      const newWidth = Math.max(
-        50,
-        e.clientX - (rect?.left ?? 0) - characterPosition.x
-      );
-      const newHeight = Math.max(
-        50,
-        e.clientY - (rect?.top ?? 0) - characterPosition.y
-      );
-      setCharacterSize({ width: newWidth, height: newHeight });
-    } else if (dragging.target && previewRef.current) {
+    if (dragging.target && previewRef.current) {
       const rect = previewRef.current.getBoundingClientRect();
-      const x = e.clientX - dragging.offsetX;
-      const y = e.clientY - dragging.offsetY;
-
+      const x = e.clientX - rect.left - dragging.offsetX;
+      const y = e.clientY - rect.top - dragging.offsetY;
+  
       if (dragging.target === "text") {
         setTextPosition({ x, y });
-      } else if (dragging.target === "topCaption") {
-        setTopCaptionPosition({ x, y });
       } else if (dragging.target === "character") {
         setCharacterPosition({ x, y });
       }
+    } else if (resizing) {
+      const rect = previewRef.current?.getBoundingClientRect();
+      const width = Math.max(
+        50,
+        e.clientX - (rect?.left ?? 0) - characterPosition.x
+      );
+      const height = Math.max(
+        50,
+        e.clientY - (rect?.top ?? 0) - characterPosition.y
+      );
+      setCharacterSize({ width, height });
     }
   };
+  
 
   const handleMouseUp = () => {
     setDragging({ target: null, offsetX: 0, offsetY: 0 });
@@ -76,17 +76,20 @@ const MemeGenerator = () => {
     if (canvas) {
       const ctx = canvas.getContext("2d");
       if (ctx) {
+        // Set canvas size to match the preview container
         const previewRect = previewRef.current?.getBoundingClientRect();
         if (previewRect) {
           canvas.width = previewRect.width;
           canvas.height = previewRect.height;
         }
-
+  
+        // Draw the background
         const bgImage = new window.Image();
         bgImage.src = background;
         bgImage.onload = () => {
           ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-
+  
+          // Draw the character image
           const charImage = new window.Image();
           charImage.src = "/images/unchill.png";
           charImage.onload = () => {
@@ -97,25 +100,18 @@ const MemeGenerator = () => {
               characterSize.width,
               characterSize.height
             );
-
+  
+            // Draw the custom text
             ctx.font = "20px Arial";
             ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-
-            if (showTopCaption && topCaption) {
-              ctx.fillText(
-                topCaption,
-                topCaptionPosition.x + characterSize.width / 2,
-                topCaptionPosition.y
-              );
-            }
-
+            ctx.textAlign = "center"; // Center-align the text
             ctx.fillText(
               customText,
-              textPosition.x + characterSize.width / 2,
+              textPosition.x + characterSize.width / 2, // Adjust x to center text
               textPosition.y
             );
-
+  
+            // Download the canvas as an image
             const link = document.createElement("a");
             link.download = "meme.png";
             link.href = canvas.toDataURL("image/png");
@@ -125,6 +121,7 @@ const MemeGenerator = () => {
       }
     }
   };
+  
 
   return (
     <section
@@ -135,12 +132,12 @@ const MemeGenerator = () => {
       <h2 className="text-3xl font-bold mb-6 text-center">Meme Generator</h2>
 
       {/* Choose Background */}
-      <div className="mb-6">
+      <div className="mb-6 w-[500px] h-[500px]">
         <h3 className="text-xl font-semibold mb-4">1. Choose a Background</h3>
         <div className="flex gap-4">
           <button
             className="p-4 border rounded-md hover:bg-gray-200 transition"
-            onClick={() => setBackground("/images/meme2.jpg")}
+            onClick={() => setBackground("/images/background.png")}
           >
             Template
           </button>
@@ -160,38 +157,17 @@ const MemeGenerator = () => {
         </div>
       </div>
 
-      {/* Captions */}
+      {/* Caption */}
       <div className="mb-6">
         <textarea
           value={customText}
           onChange={(e) => setCustomText(e.target.value)}
-          placeholder="Write your bottom caption here..."
+          placeholder="Write your custom text here..."
           className="w-full border px-4 py-2 rounded-md"
         />
       </div>
 
-      <div className="flex items-center mb-4">
-        <input
-          type="checkbox"
-          checked={showTopCaption}
-          onChange={(e) => setShowTopCaption(e.target.checked)}
-          className="mr-2"
-        />
-        <span>Add Top Caption</span>
-      </div>
-
-      {showTopCaption && (
-        <div className="mb-6">
-          <textarea
-            value={topCaption}
-            onChange={(e) => setTopCaption(e.target.value)}
-            placeholder="Write your top caption here..."
-            className="w-full border px-4 py-2 rounded-md"
-          />
-        </div>
-      )}
-
-      {/* Preview */}
+      {/* Preview with Drag-and-Drop and Resizing */}
       <div
         className="mb-6 w-[500px] h-[500px] border rounded-md overflow-hidden bg-gray-200 relative"
         ref={previewRef}
@@ -202,63 +178,52 @@ const MemeGenerator = () => {
       >
         {/* Character */}
         <div
-          onMouseDown={(e) => handleMouseDown(e, "character", characterPosition)}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          style={{
-            position: "absolute",
-            top: characterPosition.y,
-            left: characterPosition.x,
-            width: characterSize.width,
-            height: characterSize.height,
-            borderRadius: "8px",
-            border: hovered ? "2px solid black" : "none",
-            transition: "border 0.2s",
-          }}
-        >
-          <NextImage
-            src="/images/unchill.png"
-            alt="Character"
-            width={characterSize.width}
-            height={characterSize.height}
-            className="w-full h-full pointer-events-none"
-          />
-          <div
-            onMouseDown={handleMouseDownResize}
-            style={{
-              position: "absolute",
-              bottom: "-10px",
-              right: "-10px",
-              width: "20px",
-              height: "20px",
-              backgroundColor: "blue",
-              cursor: "nwse-resize",
-            }}
-          ></div>
-        </div>
+  onMouseDown={(e) => handleMouseDown(e, "character")}
+  style={{
+    position: "absolute",
+    top: characterPosition.y,
+    left: characterPosition.x,
+    width: characterSize.width,
+    height: characterSize.height,
+  }}
+  className="relative group"
+>
+  {/* Character Image */}
+  <NextImage
+    src="/images/unchill.png"
+    alt="Character"
+    width={characterSize.width}
+    height={characterSize.height}
+    className="w-full h-full pointer-events-none"
+    style={{
+      outline: "none", // Disable blue outline on focus
+      userSelect: "none", // Disable text selection
+    }}
+  />
 
-        {/* Top Caption */}
-        {showTopCaption && (
-          <div
-            onMouseDown={(e) => handleMouseDown(e, "topCaption", topCaptionPosition)}
-            style={{
-              position: "absolute",
-              top: topCaptionPosition.y,
-              left: topCaptionPosition.x,
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              color: "white",
-              padding: "8px",
-              borderRadius: "4px",
-              cursor: "grab",
-            }}
-          >
-            {topCaption}
-          </div>
-        )}
+  {/* Hover/Focus Border */}
+  <div
+    className="absolute inset-0 rounded-md border-2 border-black opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 pointer-events-none"
+  ></div>
 
-        {/* Bottom Caption */}
-        <div
-          onMouseDown={(e) => handleMouseDown(e, "text", textPosition)}
+  {/* Resize Handle */}
+  <div
+    onMouseDown={handleMouseDownResize}
+    style={{
+      position: "absolute",
+      bottom: 0,
+      right: 0,
+      width: "20px",
+      height: "20px",
+      backgroundColor: "blue",
+      cursor: "nwse-resize",
+      outline: "none", // Disable blue outline on focus
+      userSelect: "none", // Disable text selection
+    }}
+  ></div>
+</div>
+<div
+          onMouseDown={(e) => handleMouseDown(e, "text")}
           style={{
             position: "absolute",
             top: textPosition.y,
@@ -274,7 +239,7 @@ const MemeGenerator = () => {
         </div>
       </div>
 
-      {/* Canvas for Rendering */}
+      {/* Canvas for Final Rendering */}
       <canvas
         ref={canvasRef}
         width={500}

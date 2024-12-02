@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import MemeGenerator from "@components/MemeGenerator";
 
 const HomePage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -179,16 +180,14 @@ const HomePage: React.FC = () => {
 {/* Memes Section */}
 <section
         id="memes"
-        className="py-8 flex flex-col bg-gray-200 text-[maroon]"
+        className="py-8 flex flex-col bg-gray-200 text-[maroon] w-full"
       >
         <h2 className="text-4xl font-bold mb-6 text-center">Memes</h2>
         <div className="flex flex-col lg:flex-col items-center justify-center gap-12 max-w-6xl mx-auto">
           <div className=" w-full text-center">
-            <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-blue-400 mb-4">
-                Meme Generator
-              </h3>
-              <p className="text-lg text-gray-300">Coming Soon!</p>
+            <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full">
+              
+              <MemeGenerator/>
             </div>
           </div>
           <div className="w-full">
