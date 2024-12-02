@@ -7,20 +7,25 @@ import MemeGenerator from "@components/MemeGenerator";
 
 const HomePage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [gallery, setGallery] = useState<string[]>([]); // State for the memes gallery
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const imagesPerPage = 12;
+  const totalImages = gallery.length; // Update based on gallery content
+  const totalPages = Math.ceil(totalImages / imagesPerPage);
 
   const openImage = (src: string) => {
     setSelectedImage(src);
   };
-  const [currentPage, setCurrentPage] = useState(1);
-  const imagesPerPage = 12;
-  const totalImages = 12; // Change this if new images are added
-  const totalPages = Math.ceil(totalImages / imagesPerPage);
-
-
 
   const closeImage = () => {
     setSelectedImage(null);
   };
+
+  const addToGallery = (image: string) => {
+    setGallery((prevGallery) => [...prevGallery, image]); // Add image to gallery
+  };
+
   useEffect(() => {
     // Smooth scroll effect
     const links = document.querySelectorAll('a[href^="#"]');
@@ -37,8 +42,14 @@ const HomePage: React.FC = () => {
         }
       });
     });
-    
+
+    return () => {
+      links.forEach((link) => {
+        link.removeEventListener("click", () => {});
+      });
+    };
   }, []);
+
 
   return (
     <div>
@@ -187,7 +198,7 @@ const HomePage: React.FC = () => {
           <div className=" w-full text-center">
             <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full">
               
-              <MemeGenerator/>
+            <MemeGenerator addToGallery={addToGallery} />
             </div>
           </div>
           <div className="w-full">
